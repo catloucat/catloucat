@@ -4,10 +4,10 @@
     <meta charset=utf-8>
     <title>Louises sida</title>
     <link href="./main.css" rel="stylesheet" type="text/css">
-    <img src="frieze_vip.jpg" alt="frieze" width="500px" height="300px">
+    <img src="HE_empty-plate-thinkstock_s4x3_lg.jpg" alt="plate" width="530px" height="400px">
   </head>
   <body>
-    <h1>Hjälp mig välja..</h1>
+    <h1>Hjälp mig välja middag..</h1>
     <div class="inputSection">
       <div class="inputs">
         <input placeholder="Något"></input>
@@ -15,17 +15,29 @@
       <button class="addOption">Till</button>
     </div>
     <div class="resultSection"></div>
-    <button >Go!</button>
+    <button class='submit'>Go!</button>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script>
-          $(function() {
-            $('.resultSection').hide()
-            var add_option = function() {
-              $('.inputs').append('<input></input>')
-            }
-            $('.addOption').click(add_option)
+    <script>
+      $(function() {
+        $('.resultSection').hide()
+        var add_option = function() {
+          $('.inputs').append('<input></input>')
+        }
+        $('.addOption').click(add_option)
+        var options = []
+        var submit = function() {
+          $('.inputSection').hide()
+          $('.resultSection').css('display', 'flex')
+          $('input').each(function() {
+            options.push($(this).val())
           })
-        </script>
-      </body>
-    </html>
+          var winner = options[Math.floor(Math.random() * options.length)]
+          console.log(winner)
+          $('.resultSection').text(winner)
+        }
+        $('.submit').click(submit)
+      })
+    </script>
+  </body>
+</html>
